@@ -47,14 +47,49 @@ class MarketTest < Minitest::Test
     assert_equal [@vendor2], @market.vendors_that_sell(@item4)
   end
 
+  def test_it_can_calculate_potent_revenue
+    assert_equal 29.75, @vendor1.potential_revenue
+    assert_equal 345.00, @vendor2.potential_revenue
+    assert_equal 48.75, @vendor3.potential_revenue
+  end
+
+  def test_it_can_make_sorted_item_list
+    expected = ["Banana Nice Cream", "Peach", "Peach-Raspberry Nice Cream", "Tomato"]
+    assert_equal expected, @market.sorted_item_list
+  end
+
+  # def test_it_can_make_total_iventory
+  #   expected = {
+  #     @item1 =>
+  #     @item2 =>
+  #     @item3 =>
+  #     @item4 =>
+  #   }
+  # end
 end
 
-# pry(main)> vendor1.potential_revenue
-# #=> 29.75
+# pry(main)> market.total_inventory
+# #=> {
+#   #   #<Item:0x007f9c56740d48...> => {
+#   #     quantity: 100,
+#   #     vendors: [#<Vendor:0x00007fe1348a1160...>, #<Vendor:0x00007fe134910650...>]
+#   #   },
+#   #   #<Item:0x007f9c565c0ce8...> => {
+#   #     quantity: 7,
+#   #     vendors: [#<Vendor:0x00007fe1348a1160...>]
+#   #   },
+#   #   #<Item:0x007f9c56343038...> => {
+#   #     quantity: 50,
+#   #     vendors: [#<Vendor:0x00007fe1349bed40...>]
+#   #   },
+#   #   #<Item:0x007f9c562a5f18...> => {
+#   #     quantity: 35,
+#   #     vendors: [#<Vendor:0x00007fe1349bed40...>, #<Vendor:0x00007fe134910650...>]
+#   #   },
+#   # }
 #
-# pry(main)> vendor2.potential_revenue
-# #=> 345.00
+# pry(main).overstocked_items
+# #=> [#<Item:0x007f9c56740d48...>]
 #
-# pry(main)> vendor3.potential_revenue
-# #=> 48.75
-#
+# pry(main)> market.sorted_item_list
+# #=> ["Banana Nice Cream", "Peach", "Peach-Raspberry Nice Cream", "Tomato"]

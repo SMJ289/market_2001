@@ -54,12 +54,3 @@ class VendorTest < Minitest::Test
     assert_equal 28.50, @vendor.potential_revenue
   end
 end
-# pry(main)> vendor1.potential_revenue
-# #=> 29.75
-#
-# pry(main)> vendor2.potential_revenue
-# #=> 345.00
-#
-# pry(main)> vendor3.potential_revenue
-# #=> 48.75
-#

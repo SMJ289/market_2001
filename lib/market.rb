@@ -22,4 +22,18 @@ class Market
     end
   end
 
+  def sorted_item_list
+    vendor_inventories = @vendors.map do |vendor|
+      vendor.inventory
+    end
+    vendor_items = vendor_inventories.map do |vendor|
+      vendor.keys
+    end
+    item_names = vendor_items.map do |item|
+
+      item.name
+    end
+  end
+
+
 end
