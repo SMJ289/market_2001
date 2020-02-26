@@ -2,65 +2,26 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/item'
 require './lib/vendor'
+require './lib/market'
 
-class VendorTest < Minitest::Test
+class MarketTest < Minitest::Test
   def setup
-    @vendor = Vendor.new("Rocky Mountain Fresh")
-
+    @market = Market.new("South Pearl Street Farmers Market")
   end
 
   def test_it_exists
-    assert_instance_of Vendor, @vendor
+    assert_instance_of Market, @market
   end
 
   def test_it_has_attributes
-    vendor = Vendor.new("Rocky Mountain Fresh")
-    assert_equal "Rocky Mountain Fresh", vendor.name
-    expected = {}
-    assert_equal expected, vendor.inventory
+    market = Market.new("South Pearl Street Farmers Market")
+    assert_equal "South Pearl Street Farmers Market", market.name
+    assert_equal [], market.vendors
   end
 
-  def test_it_can_check_stock
-    assert_equal 0, @vendor.check_stock(@item1)
-
-    @vendor.stock(@item1, 30)
-    assert_equal 30, @vendor.check_stock(@item1)
-
-    @vendor.stock(@item1, 25)
-    assert_equal 55, @vendor.check_stock(@item1)
-  end
-
-  def test_it_can_stock_item
-    @item1 = Item.new({name: 'Peach', price: "$0.75"})
-    @item2 = Item.new({name: 'Tomato', price: '$0.50'})
-
-    @vendor.stock(@item1, 30)
-    expected = {@item1 => 30}
-
-    assert_equal expected, @vendor.inventory
-    @vendor.stock(@item1, 25)
-    @vendor.stock(@item2, 12)
-
-    expected = {@item1 => 55, @item2 => 12}
-    assert_equal expected, @vendor.inventory
-  end
 end
-#
-# pry(main)> require './lib/item'
-# #=> true
-#
-# pry(main)> require './lib/vendor'
-# #=> true
-#
-# pry(main)> require './lib/market'
-# #=> true
-#
-# pry(main)> market = Market.new("South Pearl Street Farmers Market")
-# #=> #<Market:0x00007fe134933e20...>
-#
-# pry(main)> market.name
-# #=> "South Pearl Street Farmers Market"
-#
+
+
 # pry(main)> market.vendors
 # #=> []
 #
