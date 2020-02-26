@@ -49,10 +49,6 @@ class MarketTest < Minitest::Test
 
 end
 
-#
-# pry(main)> market.vendors_that_sell(item4)
-# #=> [#<Vendor:0x00007fe1349bed40...>]
-#
 # pry(main)> vendor1.potential_revenue
 # #=> 29.75
 #
